@@ -34,17 +34,32 @@ const Header = () => {
           <span className="link-text">Services</span>
         </Link>
         <div className="nav-dropdown">
-          <Link to="/about" className={`${pathname.includes("about") ? 'nav-link-selected' : 'nav-link'}`}>
-            <BusinessIcon sx={{ fontSize: 24 }} />
-            <span className="link-text">About Us</span>
-          </Link>
-          {/* Add other navigation options with icons and text as needed */}
-          <div className="dropdown-content">
-            <Link to="/about/about-our-company" className="dropdown-link">About Our Company</Link>
-            <Link to="/about/management-team" className="dropdown-link">Management Team</Link>
-            <Link to="/about/careers" className="dropdown-link">Careers</Link>
-          </div>
-        </div>
+  <Link to="/about" className={`${pathname.includes("about") ? 'nav-link-selected' : 'nav-link'}`}>
+    <BusinessIcon sx={{ fontSize: 24 }} />
+    <span className="link-text">About Us</span>
+  </Link>
+  <div className="dropdown-content">
+    <Link to="/about/about-our-company" className="dropdown-link">About Our Company</Link>
+    <Link to="/about/management-team" className="dropdown-link">Management Team</Link>
+    <div className="nav-dropdown sub-sub-dropdown">
+      <Link to="/about/careers" className="sub-sub-link">
+        Careers
+      </Link>
+      {/* Add the new sub-sub menu options for Careers here */}
+      <div className="sub-sub-menu">
+        <Link to="/about/careers/driver" className="sub-sub-link">
+          Driver
+        </Link>
+        <Link to="/about/careers/cook" className="sub-sub-link">
+          Cook
+        </Link>
+        <Link to="/about/careers/baker" className="sub-sub-link">
+          Baker
+        </Link>
+      </div>
+    </div>
+  </div>
+</div>
         <Link to="/contact" className={`${pathname.includes("contact") ? 'nav-link-selected' : 'nav-link'}`}>
           <PhoneIcon sx={{ fontSize: 24 }} />
           <span className="link-text">Contact Us</span>

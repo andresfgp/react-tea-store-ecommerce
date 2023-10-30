@@ -104,6 +104,37 @@
     font-size: 36px; 
   }
   
+  .sub-sub-dropdown {
+    position: relative;
+  }
+  
+  .sub-sub-menu {
+    display: none;
+    position: absolute;
+    background-color: rgba(177,203,166, 0.4);
+    min-width: 180px;
+    z-index: 2;
+    text-align: center;
+  }
+  
+  .sub-sub-dropdown:hover .sub-sub-menu {
+    display: block;
+  }
+  
+  .sub-sub-link {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .sub-sub-link:hover {
+    background-color: rgba(1, 1, 1, 0.3);
+    color: white;
+  }
+  
   @media screen and (max-width: 768px) {
     .nav-link .link-text {
       display: none;
