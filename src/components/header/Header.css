@@ -1,0 +1,148 @@
+.header {
+    background-color: #B1CBA6;
+    color: black;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 10px 20px;
+  }
+  
+  .nav {
+    display: flex;
+    flex-wrap: wrap;
+  }
+  
+  .nav-link {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    padding: 5px;
+    font-weight: 600;
+  }
+  
+  .nav-link-selected {
+    background-color: rgba(1,1,1,0.2);
+    border-radius: 10%;
+    color: white;
+    text-decoration: none;
+    display: flex;
+    align-items: center;
+    margin-right: 20px;
+    padding: 5px;
+    font-weight: 600;
+  }
+  
+  .nav-dropdown {
+    position: relative;
+  }
+  
+  .nav-dropdown .dropdown-content {
+    display: none;
+    position: absolute;
+    background-color: #B1CBA6;
+    min-width: 180px;
+    z-index: 1;
+    text-align: center;
+  }
+  
+  .nav-dropdown:hover .dropdown-content {
+    display: block;
+  }
+  
+  .nav-link:hover,
+  .nav-link-selected:hover {
+    background-color: rgba(1,1,1,0.3);
+    border-radius: 10%;
+    color: white;
+  }
+  
+  .dropdown-link {
+    color: black;
+    text-decoration: none;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    padding: 10px;
+  }
+  
+  .dropdown-link:hover {
+    background-color: rgba(1,1,1,0.3);
+    color: white;
+  }
+  
+  .link-icon {
+    margin-right: 10px;
+    font-size: 24px;
+  }
+  
+  .link-text {
+    margin-left: 10px;
+  }
+
+  .logo {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: rgba(1,1,1,0.1);
+    padding: 5px;
+    border-radius: 10%;
+  }
+
+  .logo-text{
+    font-family: 'Pacifico', cursive;
+    color: white;
+    margin: 0;
+  }
+
+  .logo>img{
+    width: 40px;
+  }
+  
+  .logo-icon {
+    font-size: 36px; 
+  }
+  
+  @media screen and (max-width: 768px) {
+    .nav-link .link-text {
+      display: none;
+      margin:0;
+    }
+
+    .nav-link-selected .link-text {
+      display: none;
+      margin:0;
+    }
+
+    .logo-text  {
+      display: none;
+    }
+
+    .nav-link .link-icon {
+      margin-right: 0;
+    }
+  
+    .nav-link, .nav-link-selected {
+      margin-right: 0;
+      margin-right: 5px;
+    }
+  
+    .nav-dropdown {
+      display: block;
+    }
+  
+    .dropdown-content {
+      position: static;
+      display: none;
+      background-color: #B1CBA6;
+    }
+  
+    .nav-dropdown:hover .dropdown-content {
+      display: block;
+    }
+  
+    .nav-link:hover {
+      text-decoration: none;
+    }
+  }
