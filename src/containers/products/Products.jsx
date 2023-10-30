@@ -1,7 +1,10 @@
+import { Outlet } from "react-router-dom";
+
 const Products = () => {
   return (
     <div>
-      {/* Your header content goes here */}
+      <h1>Products</h1>
+      <Outlet />
     </div>
   );
 }

@@ -42,7 +42,7 @@ const Header = () => {
     <Link to="/about/about-our-company" className="dropdown-link">About Our Company</Link>
     <Link to="/about/management-team" className="dropdown-link">Management Team</Link>
     <div className="nav-dropdown sub-sub-dropdown">
-      <Link to="/about/careers" className="sub-sub-link">
+      <Link to="/about/careers" className="dropdown-link">
         Careers
       </Link>
       {/* Add the new sub-sub menu options for Careers here */}
