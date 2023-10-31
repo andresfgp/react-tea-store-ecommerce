@@ -9,7 +9,6 @@ import PhoneIcon from '@mui/icons-material/Phone';
 const Header = () => {
     const location = useLocation();
     const { pathname } = location;
-    console.log(pathname);
     return (
       <header className="header">
       <nav className="nav">

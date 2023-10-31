@@ -1,11 +1,12 @@
 .header {
-    background-color: #B1CBA6;
+    background-color: #fff2b3;
     color: black;
     display: flex;
     justify-content: space-between;
     align-items: center;
     padding: 10px 20px;
     box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+    z-index: 1;
   }
   
   .nav {
@@ -43,7 +44,7 @@
   .nav-dropdown .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #B1CBA6;
+    background-color: #fff2b3;
     min-width: 180px;
     z-index: 1;
   }
@@ -92,7 +93,7 @@
 
   .logo-text{
     font-family: 'Pacifico', cursive;
-    color: white;
+    color: #333;
     margin: 0;
   }
 
@@ -111,7 +112,7 @@
   .sub-sub-menu {
     display: none;
     position: absolute;
-    background-color: rgba(177,203,166, 0.4);
+    background-color: rgba(250,230,133, 0.4);
     min-width: 180px;
     z-index: 2;
   }
@@ -165,7 +166,7 @@
     .dropdown-content {
       position: static;
       display: none;
-      background-color: #B1CBA6;
+      background-color: #fff2b3;
     }
   
     .nav-dropdown:hover .dropdown-content {
