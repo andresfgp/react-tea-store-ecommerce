@@ -7,7 +7,7 @@
   display: flex;
   justify-content: center;
   align-items: center;
-  min-height: 80vh
+  min-height: 80vh;
 }
 
 .products {
@@ -26,6 +26,12 @@
   box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1); 
   max-width: 300px;
   flex: 1;
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.5);
+}
+
+.product-item:hover {
+  box-shadow: 0px 4px 6px rgba(0, 0, 0, 0.8);
+  cursor: pointer;
 }
 
 .product-item img {
