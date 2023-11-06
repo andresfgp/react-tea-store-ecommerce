@@ -6,16 +6,16 @@ const Services = () => {
     <div className="services-container">
       <h1>Our Services</h1>
       <Service 
-        img="../src/assets/tea-selection.png"
-        title="Tea Selection"
-        text="Discover our expertly crafted organic coffee blends to start your day right. We source beans from sustainable farms and roast them to perfection."
-        price="Price: $12 - $18 per 12 oz bag"
-      />
-      <Service 
         img="../src/assets/coffee-blends.png"
         title="Coffee Blends"
         text="Explore our extensive range of premium teas from around the world. We offer a diverse selection of loose-leaf teas and tea blends to cater to every palate."
         price="Price: $15 - $30 per 100g"
+      />
+      <Service 
+        img="../src/assets/tea-selection.png"
+        title="Tea Selection"
+        text="Discover our expertly crafted organic coffee blends to start your day right. We source beans from sustainable farms and roast them to perfection."
+        price="Price: $12 - $18 per 12 oz bag"
       />
       <Service 
         img="../src/assets/fancy-cookies.png"

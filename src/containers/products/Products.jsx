@@ -10,12 +10,6 @@ const Products = () => {
     <div className="products-container">
       <section className="products">
         <Product 
-          path="/products/fancy-cookies" 
-          icon={<CookieIcon sx={{ fontSize: '100px' }} />}
-          title="Fancy Cookies"
-          description="Delight in our delicious selection of fancy cookies."
-        />
-        <Product 
           path="/products/organic-coffee" 
           icon={<CoffeeIcon sx={{ fontSize: '100px' }} />}
           title="Organic Coffee"
@@ -26,6 +20,12 @@ const Products = () => {
           icon={<EmojiFoodBeverageIcon sx={{ fontSize: '100px' }} />}
           title="Premium Tea"
           description="Relax with our premium selection of teas from around the world."
+        />
+        <Product 
+          path="/products/fancy-cookies" 
+          icon={<CookieIcon sx={{ fontSize: '100px' }} />}
+          title="Fancy Cookies"
+          description="Delight in our delicious selection of fancy cookies."
         />
       </section>
     </div>

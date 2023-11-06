@@ -4,9 +4,9 @@ import Products from '../containers/products/Products';
 import Services from '../containers/services/Services';
 import AboutUs from '../containers/about-us/AboutUs';
 import ContactUs from '../containers/contact-us/ContactUs';
-import OrganicCoffee from '../containers/products/organic-coffee/OrganicCoffee';
-import PremiumTea from '../containers/products/premium-tea/PremiumTea';
-import FancyCookies from '../containers/products/fancy-cookies/FancyCookies';
+import OrganicCoffee from '../containers/products/products/organic-coffee/OrganicCoffee';
+import PremiumTea from '../containers/products/products/premium-tea/PremiumTea';
+import FancyCookies from '../containers/products/products/fancy-cookies/FancyCookies';
 
 const AppRouter = () => {
   return (

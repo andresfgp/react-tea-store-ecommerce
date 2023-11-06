@@ -1,8 +1,8 @@
 import { BrowserRouter } from 'react-router-dom'
 import './App.css'
-import AppRouter from './router/router'
 import Footer from './components/footer/Footer'
 import Header from './components/header/Header'
+import AppRouter from './router/Router'
 
 const App = () => {
 
