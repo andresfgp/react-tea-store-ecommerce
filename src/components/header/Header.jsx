@@ -62,7 +62,7 @@ const Header = () => {
         <span className="link-text">Team</span>
       </Link>
       <div className="nav-dropdown sub-sub-dropdown">
-        <Link to="/about/careers" className="dropdown-link">
+        <Link to="/about/careers/driver" className="dropdown-link">
           <WorkIcon sx={{ fontSize: 24 }} />
           <span className="link-text">Careers</span>
         </Link>

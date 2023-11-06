@@ -1,0 +1,39 @@
+.careers {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  padding: 20px;
+  align-items: flex-start;
+  height: 100%;
+  align-items: center ;
+}
+
+.tabs {
+  display: flex;
+  gap: 20px;
+}
+
+.tab,.tab-active {
+  text-decoration: none;
+  padding: 10px 20px;
+  border: 1px solid #333;
+  border-radius: 4px;
+  color: #333;
+  text-align: center;
+  transition: background-color 0.3s;
+}
+
+.tab:hover {
+  background-color: #333;
+  color: #fff;
+}
+
+.tab-active {
+  background-color: #333;
+  color: #fff;
+}
+
+.tab-active {
+  background-color: #333;
+  color: #fff;
+}

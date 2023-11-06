@@ -20,7 +20,7 @@ const AboutUs = () => {
           title="Management Team"
         />
         <LinkTo 
-          path="/about/careers" 
+          path="/about/careers/driver" 
           icon={<WorkIcon sx={{ fontSize: '100px' }} />}
           title="Careers"
         />
