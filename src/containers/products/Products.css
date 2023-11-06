@@ -1,12 +1,13 @@
 .products-container {
   text-align: center;
-  background-image: url('./src/assets/leaves.png');
+  background-image: url('../src/assets/leaves.png');
   background-size: cover;
   background-repeat: no-repeat;
   background-position: center;
   display: flex;
   justify-content: center;
   align-items: center;
+  min-height: 80vh;
 }
 
 .products {

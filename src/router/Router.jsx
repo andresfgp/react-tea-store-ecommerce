@@ -12,11 +12,10 @@ const AppRouter = () => {
   return (
       <Routes>
         <Route path="/" element={<Home />} />
-        <Route path="/products" element={<Products />} >
-          <Route path="organic-coffee" element={<OrganicCoffee />} />
-          <Route path="premium-tea" element={<PremiumTea />} />
-          <Route path="fancy-cookies" element={<FancyCookies />} />
-        </Route>
+        <Route path="/products" element={<Products />} />
+        <Route path="/products/organic-coffee" element={<OrganicCoffee />} />
+        <Route path="/products/premium-tea" element={<PremiumTea />} />
+        <Route path="/products/fancy-cookies" element={<FancyCookies />} />
         <Route path="/services" element={<Services />} />
         <Route path="/about" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
