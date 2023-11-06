@@ -1,0 +1,84 @@
+/* ManagementTeam.css */
+.management-team {
+  padding: 40px 0;
+  align-items: flex-start;
+  height: 100%;
+}
+
+.management-team .section-title {
+  text-align: center;
+}
+
+.section-team{
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.management-team h2 {
+  font-size: 28px;
+  color: #333;
+  margin: 0;
+}
+
+/* Updated CSS for ManagementTeamMember */
+.member {
+  text-align: center;
+  margin: 20px;
+  padding: 20px;
+  background-color: rgba(1, 1, 1, 0.1);
+  border-radius: 10px;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.8);
+  width: 200px;
+}
+
+.member:hover {
+  cursor: pointer;
+}
+
+.member img {
+  max-width: 100%;
+  border: 1px solid #ddd;
+  border-radius: 5px;
+}
+
+.member h4 {
+  margin: 5px 0;
+}
+
+.member span {
+  font-weight: bold;
+  color: #149ddd;
+  margin: 5px 0;
+  
+}
+
+.member .social a {
+  font-size: 18px;
+  display: inline-block;
+  background: #333;
+  color: #fff;
+  line-height: 1;
+  padding: 8px 0;
+  border-radius: 50%;
+  text-align: center;
+  width: 36px;
+  transition: 0.3s;
+  margin-right: 10px;
+  margin-top: 10px;
+}
+
+.member .social a:hover {
+  background: #149ddd;
+  color: #fff;
+}
+
+/* Updated CSS for responsiveness */
+@media screen and (max-width: 768px) {
+  .member {
+    max-width: 100%;
+  }
+.section-team{
+    flex-direction: column;
+}
+}

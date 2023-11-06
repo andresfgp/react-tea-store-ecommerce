@@ -10,22 +10,24 @@ const ContactUs = () => {
         <div className="row" data-aos="fade-in">
           <div className="col-lg-5 d-flex align-items-stretch">
             <div className="info">
-              <div className="address">
-                <h4>Location:</h4>
-                <p>Melbourne, Australia</p>
-              </div>
-              <div className="email">
-                <h4>Email:</h4>
-                <p>contact@aussietea.com</p>
-              </div>
-              <div className="phone">
-                <h4>Phone:</h4>
-                <p>(+61) 123-456-7890</p>
+              <div>
+                <div className="address">
+                  <h4>Location:</h4>
+                  <p>Melbourne, Australia</p>
+                </div>
+                <div className="email">
+                  <h4>Email:</h4>
+                  <p>contact@aussietea.com</p>
+                </div>
+                <div className="phone">
+                  <h4>Phone:</h4>
+                  <p>(+61) 123-456-7890</p>
+                </div>
               </div>
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d96429.97201272316!2d144.9631!3d-37.8136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sau!4v1234567890123!5m2!1sen!2sau"
                 frameBorder="0"
-                style={{ border: 0, width: '100%', height: '290px' }}
+                className='info-iframe'
                 allowFullScreen
               ></iframe>
             </div>

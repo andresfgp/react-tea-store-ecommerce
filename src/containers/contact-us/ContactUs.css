@@ -30,6 +30,14 @@
   border-radius: 5px;
   padding: 20px;
   margin-bottom: 20px;
+  display: flex;
+  justify-content: space-between;
+}
+
+.contact .info-iframe {
+  border: 0;
+  width: 50%;
+  height: '290px' 
 }
 
 .contact .info i {
@@ -120,7 +128,8 @@
   border-radius: 5px;
   font-size: 16px;
   margin-bottom: 10px;
-  box-sizing: border-box;
+  box-sizing: border-box; 
+  margin-top: 5px;
 }
 
 .contact .form-group textarea {
@@ -186,4 +195,14 @@
 .contact .text-center button[type="submit"]:hover {
   background: #37b3ed;
   cursor: pointer;
+}
+
+  
+@media screen and (max-width: 768px) {
+  .contact .info {
+    flex-direction: column;
+  }
+  .contact .info-iframe {
+    width: 100%;
+  }
 }

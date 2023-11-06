@@ -1,34 +1,28 @@
 .about-us-container {
-    text-align: center;
-    background-color: #f7f7f7;
-    padding: 40px;
-    border: 1px solid #e0e0e0;
-    border-radius: 10px;
-    box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-    margin: 20px;
-  }
-  
-  .about-us-heading {
-    color: #333;
-    font-size: 32px;
-    font-weight: 600;
-    margin-bottom: 20px;
+  text-align: center;
+  background-image: url('../src/assets/leaves.png');
+  background-size: cover;
+  background-repeat: no-repeat;
+  background-position: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 100%;
+}
+
+.about-us {
+  display: flex;
+  flex-wrap: wrap; 
+  justify-content: space-around;
+  margin-top: 20px;
+}
+
+@media screen and (max-width: 768px) {
+  .about-us-container {
+    padding: 10px;
   }
 
-  .about-us-image img{
-    width: 100px;
+  .about-us {
+    flex-direction: column;
   }
-  
-  .about-us-description {
-    color: #555;
-    font-size: 18px;
-    margin-bottom: 20px;
-    max-width: 800px;
-    margin: 0 auto;
-    line-height: 1.6;
-  }
-  
-  .about-us-description:last-child {
-    margin-bottom: 0;
-  }
-  
+}

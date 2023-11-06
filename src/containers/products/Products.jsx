@@ -2,26 +2,26 @@ import './Products.css';
 import CoffeeIcon from '@mui/icons-material/Coffee';
 import EmojiFoodBeverageIcon from '@mui/icons-material/EmojiFoodBeverage';
 import CookieIcon from '@mui/icons-material/Cookie';
-import Product from './Product';
+import LinkTo from '../../components/link-to/LinkTo';
 
 const Products = () => {
   
   return (
     <div className="products-container">
       <section className="products">
-        <Product 
+        <LinkTo 
           path="/products/organic-coffee" 
           icon={<CoffeeIcon sx={{ fontSize: '100px' }} />}
           title="Organic Coffee"
           description="Start your day with our premium, organic coffee."
         />
-        <Product 
+        <LinkTo 
           path="/products/premium-tea" 
           icon={<EmojiFoodBeverageIcon sx={{ fontSize: '100px' }} />}
           title="Premium Tea"
-          description="Relax with our premium selection of teas from around the world."
+          description="Relax with our premium selection of teas."
         />
-        <Product 
+        <LinkTo 
           path="/products/fancy-cookies" 
           icon={<CookieIcon sx={{ fontSize: '100px' }} />}
           title="Fancy Cookies"

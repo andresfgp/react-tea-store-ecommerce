@@ -1,11 +1,11 @@
 /* eslint-disable react/prop-types */
-import './Product.css';
+import './LinkTo.css';
 import { Link } from 'react-router-dom';
 
-const Product = ({path, icon, title, description}) => {
+const LinkTo = ({path, icon, title, description}) => {
   return (
     <Link to={path} style={{textDecoration: 'none', color: "inherit"}} >
-        <div className="product-item">
+        <div className="link-to-item">
           {icon}
           <h2>{title}</h2>
           <h4>{description}</h4>
@@ -14,4 +14,4 @@ const Product = ({path, icon, title, description}) => {
   );
 };
 
-export default Product;
+export default LinkTo;

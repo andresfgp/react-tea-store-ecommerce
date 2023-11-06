@@ -7,6 +7,8 @@ import ContactUs from '../containers/contact-us/ContactUs';
 import OrganicCoffee from '../containers/products/products/organic-coffee/OrganicCoffee';
 import PremiumTea from '../containers/products/products/premium-tea/PremiumTea';
 import FancyCookies from '../containers/products/products/fancy-cookies/FancyCookies';
+import AboutOurCompany from '../containers/about-us/about/about-our-company/AboutOurCompany';
+import ManagementTeam from '../containers/about-us/about/management-team/ManagementTeam';
 
 const AppRouter = () => {
   return (
@@ -18,6 +20,9 @@ const AppRouter = () => {
         <Route path="/products/fancy-cookies" element={<FancyCookies />} />
         <Route path="/services" element={<Services />} />
         <Route path="/about" element={<AboutUs />} />
+        <Route path="/about/about-our-company" element={<AboutOurCompany />} />
+        <Route path="/about/management-team" element={<ManagementTeam />} />
+        <Route path="/about/careers" element={<AboutUs />} />
         <Route path="/contact" element={<ContactUs />} />
       </Routes>
   );

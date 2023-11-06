@@ -5,6 +5,12 @@ import LocalCafeIcon from '@mui/icons-material/LocalCafe';
 import RestaurantIcon from '@mui/icons-material/Restaurant';
 import BusinessIcon from '@mui/icons-material/Business';
 import PhoneIcon from '@mui/icons-material/Phone';
+import CoffeeIcon from '@mui/icons-material/Coffee';
+import EmojiFoodBeverageIcon from '@mui/icons-material/EmojiFoodBeverage';
+import CookieIcon from '@mui/icons-material/Cookie';
+import GroupsIcon from '@mui/icons-material/Groups';
+import AssignmentIndIcon from '@mui/icons-material/AssignmentInd';
+import WorkIcon from '@mui/icons-material/Work';
 
 const Header = () => {
     const location = useLocation();
@@ -23,9 +29,18 @@ const Header = () => {
           </Link>
           {/* Add other navigation options with icons and text as needed */}
           <div className="dropdown-content">
-            <Link to="/products/organic-coffee" className="dropdown-link">Organic Coffee</Link>
-            <Link to="/products/premium-tea" className="dropdown-link">Premium Tea</Link>
-            <Link to="/products/fancy-cookies" className="dropdown-link">Fancy Cookies</Link>
+            <Link to="/products/organic-coffee" className="dropdown-link">
+              <CoffeeIcon sx={{ fontSize: 24 }} />
+              <span className="link-text">Organic Coffee</span>
+            </Link>
+            <Link to="/products/premium-tea" className="dropdown-link">
+              <EmojiFoodBeverageIcon sx={{ fontSize: 24 }} />
+              <span className="link-text">Premium Tea</span>
+            </Link>
+            <Link to="/products/fancy-cookies" className="dropdown-link">
+              <CookieIcon sx={{ fontSize: 24 }} />
+              <span className="link-text">Fancy Cookies</span>
+            </Link>
           </div>
         </div>
         <Link to="/services" className={`${pathname.includes("services") ? 'nav-link-selected' : 'nav-link'}`}>
@@ -38,11 +53,18 @@ const Header = () => {
           <span className="link-text">About Us</span>
         </Link>
     <div className="dropdown-content">
-      <Link to="/about/about-our-company" className="dropdown-link">About Our Company</Link>
-      <Link to="/about/management-team" className="dropdown-link">Management Team</Link>
+      <Link to="/about/about-our-company" className="dropdown-link">
+        <GroupsIcon sx={{ fontSize: 24 }} />
+        <span className="link-text">Our Company</span>
+      </Link>
+      <Link to="/about/management-team" className="dropdown-link">
+        <AssignmentIndIcon sx={{ fontSize: 24 }} />
+        <span className="link-text">Team</span>
+      </Link>
       <div className="nav-dropdown sub-sub-dropdown">
         <Link to="/about/careers" className="dropdown-link">
-          Careers
+          <WorkIcon sx={{ fontSize: 24 }} />
+          <span className="link-text">Careers</span>
         </Link>
         {/* Add the new sub-sub menu options for Careers here */}
         <div className="sub-sub-menu">
