@@ -56,7 +56,7 @@ const Header = () => {
   return (
     <header className="header">
         <nav className="nav">
-        {searchClick && <>
+        {!searchClick ? <>
           <Link
             to="/"
             className={`${pathname === "/" ? "nav-link-selected" : "nav-link"}`}
@@ -147,9 +147,9 @@ const Header = () => {
             <PhoneIcon sx={{ fontSize: 24 }} />
             <span className="link-text">Contact Us</span>
           </Link>
-        </>}
+        </> : null}
         <div className="search-area" ref={searchRef}>
-        {(dimensions.width < 1100 && !searchClick) || dimensions.width > 1100 ? (
+        {(dimensions.width < 1100 && searchClick) || dimensions.width > 1100 ? (
             <input
               type="text"
               placeholder="Search..."
