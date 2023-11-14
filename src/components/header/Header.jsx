@@ -37,7 +37,7 @@ const Header = () => {
   useEffect(() => {
     const handleClickOutside = (event) => {
       if (searchRef.current && !searchRef.current.contains(event.target)) {
-        setSearchClick(true);
+        setSearchClick(false);
       }
     };
     document.addEventListener("mousedown", handleClickOutside);
