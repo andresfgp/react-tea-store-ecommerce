@@ -1,6 +1,33 @@
+import React, { useState } from 'react';
+import axios from 'axios';
+
 import './ContactUs.css';
 
 const ContactUs = () => {
+  const [formData, setFormData] = useState({
+    name: '',
+    email: '',
+    subject: '',
+    message: '',
+  });
+
+  const handleChange = (e) => {
+    setFormData({ ...formData, [e.target.name]: e.target.value });
+  };
+
+  const handleSubmit = async (e) => {
+    e.preventDefault();
+
+    try {
+      const response = await axios.post('https://aussie-tea-server.onrender.com/contact', formData);
+      console.log('Response:', response.data);
+      // Handle success, e.g., show a success message to the user
+    } catch (error) {
+      console.error('Error:', error.response.data);
+      // Handle error, e.g., show an error message to the user
+    }
+  };
+
   return (
     <section id="contact" className="contact">
       <div className="container">
@@ -33,12 +60,7 @@ const ContactUs = () => {
             </div>
           </div>
           <div className="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form
-              action="forms/contact.php"
-              method="post"
-              role="form"
-              className="php-email-form"
-            >
+            <form onSubmit={handleSubmit} className="php-email-form">
               <div className="row">
                 <div className="form-group col-md-6">
                   <label htmlFor="name">Name</label>
@@ -48,6 +70,7 @@ const ContactUs = () => {
                     className="form-control"
                     id="name"
                     required
+                    onChange={handleChange}
                   />
                 </div>
                 <div className="form-group col-md-6">
@@ -58,6 +81,7 @@ const ContactUs = () => {
                     name="email"
                     id="email"
                     required
+                    onChange={handleChange}
                   />
                 </div>
               </div>
@@ -69,6 +93,7 @@ const ContactUs = () => {
                   name="subject"
                   id="subject"
                   required
+                  onChange={handleChange}
                 />
               </div>
               <div className="form-group">
@@ -78,6 +103,7 @@ const ContactUs = () => {
                   name="message"
                   rows="10"
                   required
+                  onChange={handleChange}
                 ></textarea>
               </div>
               <div className="my-3">
