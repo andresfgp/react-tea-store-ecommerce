@@ -1,5 +1,6 @@
 import RamenDiningIcon from '@mui/icons-material/RamenDining';
-import Career from '../career.jsx';
+import Career from "../career";
+
 const Cook = () => {
   return (
     <Career

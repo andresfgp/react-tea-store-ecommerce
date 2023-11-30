@@ -1,5 +1,5 @@
-import Career from '../career.jsx';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
+import Career from "../career";
 const Driver = () => {
   return (
     <Career

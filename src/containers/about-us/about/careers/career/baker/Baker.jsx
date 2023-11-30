@@ -1,5 +1,5 @@
 import BakeryDiningIcon from '@mui/icons-material/BakeryDining';
-import Career from '../career.jsx';
+import Career from "../career";
 const Baker = () => {
   return (
     <Career
