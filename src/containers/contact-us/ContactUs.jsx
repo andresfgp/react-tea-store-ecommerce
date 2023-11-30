@@ -1,5 +1,6 @@
 import { useState } from 'react';
 import axios from 'axios';
+import Modal from 'react-modal';
 
 import './ContactUs.css';
 
@@ -8,10 +9,24 @@ const INITIAL_DATA = {
   email: '',
   subject: '',
   message: '',
-}
+};
 
 const ContactUs = () => {
   const [formData, setFormData] = useState(INITIAL_DATA);
+  const [loading, setLoading] = useState(false);
+  const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [modalContent, setModalContent] = useState({});
+
+  const openModal = (content) => {
+    setModalContent(content);
+    setModalIsOpen(true);
+  };
+
+  const closeModal = () => {
+    setModalIsOpen(false);
+    // Reset the form after closing the modal
+    setFormData(INITIAL_DATA);
+  };
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,15 +34,24 @@ const ContactUs = () => {
 
   const handleSubmit = async (e) => {
     e.preventDefault();
+    setLoading(true);
 
     try {
-      const response = await axios.post('https://aussie-tea-server.onrender.com/contact', formData)
-        .then(() => setFormData(INITIAL_DATA));
-      console.log('Response:', response.data);
-      // Handle success, e.g., show a success message to the user
+      await axios.post(
+        'https://aussie-tea-server.onrender.com/contact',
+        formData
+      );
+      openModal({
+        type: 'success',
+        message: 'Your message has been sent successfully. Thank you!',
+      });
     } catch (error) {
-      console.error('Error:', error.response.data);
-      // Handle error, e.g., show an error message to the user
+      openModal({
+        type: 'error',
+        message: 'An error occurred. Please try again later.',
+      });
+    } finally {
+      setLoading(false);
     }
   };
 
@@ -57,13 +81,13 @@ const ContactUs = () => {
               <iframe
                 src="https://www.google.com/maps/embed?pb=!1m14!1m12!1m3!1d96429.97201272316!2d144.9631!3d-37.8136!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!5e0!3m2!1sen!2sau!4v1234567890123!5m2!1sen!2sau"
                 frameBorder="0"
-                className='info-iframe'
+                className="info-iframe"
                 allowFullScreen
               ></iframe>
             </div>
           </div>
           <div className="col-lg-7 mt-5 mt-lg-0 d-flex align-items-stretch">
-            <form onSubmit={handleSubmit} className="php-email-form">
+            <form onSubmit={handleSubmit} className="py-email-form">
               <div className="row">
                 <div className="form-group col-md-6">
                   <label htmlFor="name">Name</label>
@@ -74,6 +98,7 @@ const ContactUs = () => {
                     id="name"
                     required
                     onChange={handleChange}
+                    value={formData.name}
                   />
                 </div>
                 <div className="form-group col-md-6">
@@ -85,6 +110,7 @@ const ContactUs = () => {
                     id="email"
                     required
                     onChange={handleChange}
+                    value={formData.email}
                   />
                 </div>
               </div>
@@ -97,6 +123,7 @@ const ContactUs = () => {
                   id="subject"
                   required
                   onChange={handleChange}
+                  value={formData.subject}
                 />
               </div>
               <div className="form-group">
@@ -107,6 +134,7 @@ const ContactUs = () => {
                   rows="10"
                   required
                   onChange={handleChange}
+                  value={formData.message}
                 ></textarea>
               </div>
               <div className="my-3">
@@ -117,12 +145,24 @@ const ContactUs = () => {
                 </div>
               </div>
               <div className="text-center">
-                <button type="submit">Send</button>
+                <button type="submit" disabled={loading}>
+                  {loading ? 'Sending...' : 'Send'}
+                </button>
               </div>
             </form>
           </div>
         </div>
       </div>
+      <Modal
+        className="modal"
+        isOpen={modalIsOpen}
+        onRequestClose={closeModal}
+        contentLabel="Modal"
+      >
+        <h2>{modalContent.type === 'success' ? 'Success!' : 'Error'}</h2>
+        <p>{modalContent.message}</p>
+        <button className='close-button' onClick={closeModal}>Close</button>
+      </Modal>
     </section>
   );
 };
