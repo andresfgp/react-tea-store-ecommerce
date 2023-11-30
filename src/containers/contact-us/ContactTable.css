@@ -1,0 +1,21 @@
+.modal-table {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+  }
+  
+  .modal-container {
+    background-color: #fff;
+    padding: 20px;
+    border-radius: 8px;
+  }
+  
+  .modal-text-field {
+    margin-bottom: 16px !important;
+  }
+  
+  .modal-button {
+    margin-right: 8px !important;
+  }
+
+  

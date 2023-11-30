@@ -3,6 +3,7 @@ import axios from 'axios';
 import Modal from 'react-modal';
 
 import './ContactUs.css';
+import ContactTable from './ContactTable';
 
 const INITIAL_DATA = {
   name: '',
@@ -161,8 +162,9 @@ const ContactUs = () => {
       >
         <h2>{modalContent.type === 'success' ? 'Success!' : 'Error'}</h2>
         <p>{modalContent.message}</p>
-        <button className='close-button' onClick={closeModal}>Close</button>
+        <button className='close-button' onClick={closeModal}>Cancel</button>
       </Modal>
+      <ContactTable />
     </section>
   );
 };
