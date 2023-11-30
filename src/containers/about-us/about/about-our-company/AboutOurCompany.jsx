@@ -4,7 +4,7 @@ const AboutOurCompany = () => {
   return (
     <div className="about-ourCompany-container">
       <div className="about-ourCompany-image">
-        <img src="../src/assets/logo.png" />
+        <img src="../../assets/logo.png" />
       </div>
       <div className="about-ourCompany-content">
         <h1 className="about-ourCompany-heading">About Aussie Tea</h1>

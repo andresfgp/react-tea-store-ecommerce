@@ -160,7 +160,7 @@ const Header = () => {
         </div>
       </nav>
       <div className="logo">
-        <img src="../src/assets/logo.png" alt="Company Logo" />
+        <img src="../../../assets/logo.png" alt="Company Logo" />
         <h3 className="logo-text">Aussie Tea</h3>
       </div>
     </header>

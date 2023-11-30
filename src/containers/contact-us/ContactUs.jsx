@@ -1,15 +1,17 @@
-import React, { useState } from 'react';
+import { useState } from 'react';
 import axios from 'axios';
 
 import './ContactUs.css';
 
+const INITIAL_DATA = {
+  name: '',
+  email: '',
+  subject: '',
+  message: '',
+}
+
 const ContactUs = () => {
-  const [formData, setFormData] = useState({
-    name: '',
-    email: '',
-    subject: '',
-    message: '',
-  });
+  const [formData, setFormData] = useState(INITIAL_DATA);
 
   const handleChange = (e) => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
@@ -19,7 +21,8 @@ const ContactUs = () => {
     e.preventDefault();
 
     try {
-      const response = await axios.post('https://aussie-tea-server.onrender.com/contact', formData);
+      const response = await axios.post('https://aussie-tea-server.onrender.com/contact', formData)
+        .then(() => setFormData(INITIAL_DATA));
       console.log('Response:', response.data);
       // Handle success, e.g., show a success message to the user
     } catch (error) {
