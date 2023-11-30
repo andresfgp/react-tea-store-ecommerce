@@ -1,4 +1,4 @@
-import Career from "../career";
+import Career from '../career';
 import LocalShippingIcon from '@mui/icons-material/LocalShipping';
 const Driver = () => {
   return (
