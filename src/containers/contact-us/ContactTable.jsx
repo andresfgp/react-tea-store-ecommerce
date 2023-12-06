@@ -1,6 +1,5 @@
-import React, { useState, useEffect } from 'react';
+import { useState, useEffect } from 'react';
 import './ContactTable.css';
-import axios from 'axios';
 import {
   Table,
   TableBody,
@@ -12,17 +11,14 @@ import {
   Button,
   Modal,
   TextField,
-  Snackbar,
 } from '@mui/material';
-import MuiAlert from '@mui/material/Alert';
 import EditIcon from '@mui/icons-material/Edit';
 import DeleteIcon from '@mui/icons-material/Delete';
-
-const Alert = React.forwardRef(function Alert(props, ref) {
-  return <MuiAlert elevation={6} ref={ref} variant="filled" {...props} />;
-});
+import { useSnackbar } from '../../hooks/useSnackbar';
+import useAuthAxios from '../../hooks/useAuthAxios';
 
 const ContactTable = () => {
+  const authAxios = useAuthAxios();
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
   const [modalOpen, setModalOpen] = useState(false);
@@ -32,14 +28,12 @@ const ContactTable = () => {
     subject: '',
     message: '',
   });
-  const [snackbarOpen, setSnackbarOpen] = useState(false);
-  const [snackbarSeverity, setSnackbarSeverity] = useState('');
-  const [snackbarMessage, setSnackbarMessage] = useState('');
+  const showSnackbar = useSnackbar();
   const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
 
   const fetchContacts = async () => {
     try {
-      const response = await axios.get('https://aussie-tea-server.onrender.com/contact');
+      const response = await authAxios.get('https://aussie-tea-server.onrender.com/contact');
       setContacts(response.data.result);
     } catch (error) {
       console.error('Error fetching contacts:', error);
@@ -65,7 +59,7 @@ const ContactTable = () => {
   const handleUpdate = async () => {
     try {
       delete formData._id;
-      await axios.put(`https://aussie-tea-server.onrender.com/contact/${selectedContact._id}`, formData);
+      await authAxios.put(`https://aussie-tea-server.onrender.com/contact/${selectedContact._id}`, formData);
       handleCloseModal();
       fetchContacts();
       showSnackbar('success', 'Contact updated successfully');
@@ -85,7 +79,7 @@ const ContactTable = () => {
 
   const handleDelete = async (id) => {
     try {
-      await axios.delete(`https://aussie-tea-server.onrender.com/contact/${id}`);
+      await authAxios.delete(`https://aussie-tea-server.onrender.com/contact/${id}`);
       fetchContacts();
       showSnackbar('success', 'Contact deleted successfully');
       handleCloseDeleteConfirmation()
@@ -98,15 +92,6 @@ const ContactTable = () => {
     setFormData({ ...formData, [e.target.name]: e.target.value });
   };
 
-  const showSnackbar = (severity, message) => {
-    setSnackbarSeverity(severity);
-    setSnackbarMessage(message);
-    setSnackbarOpen(true);
-  };
-
-  const handleCloseSnackbar = () => {
-    setSnackbarOpen(false);
-  };
 
   return (
     <div>
@@ -179,13 +164,6 @@ const ContactTable = () => {
           </Button>
         </div>
       </Modal>
-
-      {/* Snackbar */}
-      <Snackbar open={snackbarOpen} autoHideDuration={6000} onClose={handleCloseSnackbar}>
-        <Alert onClose={handleCloseSnackbar} severity={snackbarSeverity}>
-          {snackbarMessage}
-        </Alert>
-      </Snackbar>
     </div>
   );
 };

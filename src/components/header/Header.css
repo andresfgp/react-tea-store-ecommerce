@@ -1,5 +1,5 @@
 .header {
-    background-color: #fff2b3;
+    background-color: #004f73;
     color: black;
     display: flex;
     justify-content: space-between;
@@ -15,7 +15,7 @@
   }
   
   .nav-link {
-    color: black;
+    color: white;
     text-decoration: none;
     display: flex;
     align-items: right;
@@ -44,7 +44,7 @@
   .nav-dropdown .dropdown-content {
     display: none;
     position: absolute;
-    background-color: #fff2b3;
+    background-color: #004f73;
     min-width: 180px;
     z-index: 1;
   }
@@ -61,7 +61,7 @@
   }
   
   .dropdown-link {
-    color: black;
+    color: white;
     text-decoration: none;
     display: flex;
     flex-direction: row;
@@ -94,7 +94,7 @@
 
   .logo-text{
     font-family: 'Pacifico', cursive;
-    color: #333;
+    color: white;
     margin: 0;
   }
 
@@ -113,7 +113,7 @@
   .sub-sub-menu {
     display: none;
     position: absolute;
-    background-color: rgba(250,230,133, 0.8);
+    background-color: #004f737b;
     min-width: 180px;
     z-index: 2;
   }
@@ -123,7 +123,7 @@
   }
   
   .sub-sub-link {
-    color: black;
+    color: white;
     text-decoration: none;
     display: flex;
     flex-direction: column;
@@ -150,13 +150,15 @@
     border-radius: 5px;
 }
 
+.search-icon{
+  color: white;
+}
+
 .search-input:focus {
     outline: none;
-    border-color: #007bff;
 }
 
 .search-button {
-    background-color: #007bff;
     color: white;
     border: none;
     padding: 5px 10px;
@@ -166,7 +168,7 @@
 }
 
 .search-button:hover {
-    background-color: #0056b3;
+    background-color: black;
 }
 
   @media screen and (max-width: 768px) {
@@ -200,7 +202,7 @@
     .dropdown-content {
       position: static;
       display: none;
-      background-color: #fff2b3;
+      background-color: #004f737b;
     }
   
     .nav-dropdown:hover .dropdown-content {

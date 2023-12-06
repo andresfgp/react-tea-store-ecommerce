@@ -13,15 +13,23 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import WorkIcon from "@mui/icons-material/Work";
 import { useEffect, useRef, useState } from "react";
+import { useAuth } from "../../AuthContext";
+import { Box, Button } from "@mui/material";
 
 const Header = () => {
   const location = useLocation();
   const { pathname } = location;
   const searchRef = useRef(null);
+  const storedToken = localStorage.getItem('token');
+  const { logout } = useAuth();
   const [dimensions, setDimensions] = useState({
     width: window.innerWidth,
     height: window.innerHeight,
   });
+
+  const handleLogout = async () => {
+    await logout();
+  };
 
   const [searchClick, setSearchClick] = useState(false)
   const handleResize = () => {
@@ -159,10 +167,28 @@ const Header = () => {
           <SearchIcon onClick={toggleSearch} className="search-icon" />
         </div>
       </nav>
-      <div className="logo">
-        <img src="../../../assets/logo.png" alt="Company Logo" />
-        <h3 className="logo-text">Aussie Tea</h3>
-      </div>
+      <Box sx={{ display: "flex"}}>
+        {storedToken ? (
+            <>
+              {/* If the user is logged in, show logout button */}
+              <Button sx={{color:"white", textTransform: "none"}} onClick={() => handleLogout()}>
+                Logout
+              </Button>
+            </>
+          ) : (
+            <>
+              {/* If the user is not logged in, show login button */}
+              <Link to="/login" className="nav-link">
+                Login
+              </Link>
+            </>
+          )}
+        <div className="logo">
+          <img src="../../../assets/logo.png" alt="Company Logo" />
+          <h3 className="logo-text">Aussie Tea</h3>
+        </div>
+
+      </Box>
     </header>
   );
 };

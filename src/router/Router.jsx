@@ -1,4 +1,6 @@
-import { Routes, Route } from 'react-router-dom';
+/* eslint-disable react-hooks/exhaustive-deps */
+import { Routes, Route, useNavigate, useLocation } from 'react-router-dom';
+import jwt_decode from 'jwt-decode';
 import Home from '../containers/home/Home';
 import Products from '../containers/products/Products';
 import Services from '../containers/services/Services';
@@ -13,9 +15,36 @@ import Careers from '../containers/about-us/about/careers/Careers';
 import Driver from '../containers/about-us/about/careers/career/driver/Driver';
 import Cook from '../containers/about-us/about/careers/career/cook/Cook';
 import Baker from '../containers/about-us/about/careers/career/baker/Baker';
+import Login from '../containers/auth/Login';
+import { useEffect } from 'react';
+import Header from '../components/header/Header';
+import Footer from '../components/footer/Footer';
+import Dashboard from '../containers/private/dashboard/Dashboard';
 
 const AppRouter = () => {
+  const navigate = useNavigate();
+  const location = useLocation();
+  const storedToken = localStorage.getItem('token');
+
+  useEffect(() => {
+    if (storedToken) {
+      const decodedToken = jwt_decode(storedToken);
+      const isTokenExpired = decodedToken.exp * 1000 < Date.now();
+
+      if (isTokenExpired) {
+        localStorage.removeItem('user');
+        localStorage.removeItem('token');
+        navigate('/login');
+      }    
+      if (!isTokenExpired && location.pathname==="/login") {
+        navigate('/');
+      }
+    }
+  }, [location.pathname, navigate, storedToken]);
+
   return (
+    <>
+      {location.pathname!=="/login" && <Header />}
       <Routes>
         <Route path="/" element={<Home />} />
         <Route path="/products" element={<Products />} />
@@ -27,13 +56,17 @@ const AppRouter = () => {
         <Route path="/about/about-our-company" element={<AboutOurCompany />} />
         <Route path="/about/management-team" element={<ManagementTeam />} />
         <Route path="/about/careers" element={<Careers />}>
-         <Route path="driver" element={<Driver />} />
-         <Route path="cook" element={<Cook />} />
-         <Route path="baker" element={<Baker />} />
+          <Route path="driver" element={<Driver />} />
+          <Route path="cook" element={<Cook />} />
+          <Route path="baker" element={<Baker />} />
         </Route>
         <Route path="/contact" element={<ContactUs />} />
+        <Route path="/login" element={<Login />} />
+        <Route path="/dashboard" element={<Dashboard />} />
       </Routes>
+      {location.pathname!=="/login" && <Footer />}
+    </>
   );
-}
+};
 
 export default AppRouter;
