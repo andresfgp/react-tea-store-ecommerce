@@ -13,7 +13,7 @@ import GroupsIcon from "@mui/icons-material/Groups";
 import AssignmentIndIcon from "@mui/icons-material/AssignmentInd";
 import WorkIcon from "@mui/icons-material/Work";
 import { useEffect, useRef, useState } from "react";
-import { useAuth } from "../../AuthContext";
+import { useAuth } from "../../containers/auth/AuthContext";
 import { Box, Button } from "@mui/material";
 
 const Header = () => {

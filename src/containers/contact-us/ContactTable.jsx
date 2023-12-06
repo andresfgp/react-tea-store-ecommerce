@@ -33,7 +33,7 @@ const ContactTable = () => {
 
   const fetchContacts = async () => {
     try {
-      const response = await authAxios.get('https://aussie-tea-server.onrender.com/contact');
+      const response = await authAxios.get('contact');
       setContacts(response.data.result);
     } catch (error) {
       console.error('Error fetching contacts:', error);
@@ -59,7 +59,7 @@ const ContactTable = () => {
   const handleUpdate = async () => {
     try {
       delete formData._id;
-      await authAxios.put(`https://aussie-tea-server.onrender.com/contact/${selectedContact._id}`, formData);
+      await authAxios.put(`contact/${selectedContact._id}`, formData);
       handleCloseModal();
       fetchContacts();
       showSnackbar('success', 'Contact updated successfully');
@@ -79,7 +79,7 @@ const ContactTable = () => {
 
   const handleDelete = async (id) => {
     try {
-      await authAxios.delete(`https://aussie-tea-server.onrender.com/contact/${id}`);
+      await authAxios.delete(`contact/${id}`);
       fetchContacts();
       showSnackbar('success', 'Contact deleted successfully');
       handleCloseDeleteConfirmation()
@@ -95,7 +95,7 @@ const ContactTable = () => {
 
   return (
     <div>
-      <TableContainer component={Paper}>
+      {contacts.length > 0 && <TableContainer component={Paper}>
         <Table>
           <TableHead>
             <TableRow>
@@ -134,7 +134,7 @@ const ContactTable = () => {
             ))}
           </TableBody>
         </Table>
-      </TableContainer>
+      </TableContainer>}
 
       {/* Edit Modal */}
       <Modal className="modal-table" open={modalOpen} onClose={handleCloseModal}>
