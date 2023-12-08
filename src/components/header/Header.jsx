@@ -26,6 +26,7 @@ const Header = () => {
     width: window.innerWidth,
     height: window.innerHeight,
   });
+  const show = false
 
   const handleLogout = async () => {
     await logout();
@@ -168,21 +169,23 @@ const Header = () => {
         </div>
       </nav>
       <Box sx={{ display: "flex"}}>
-        {storedToken ? (
-            <>
-              {/* If the user is logged in, show logout button */}
-              <Button sx={{color:"white", textTransform: "none"}} onClick={() => handleLogout()}>
-                Logout
-              </Button>
-            </>
-          ) : (
-            <>
-              {/* If the user is not logged in, show login button */}
-              <Link to="/login" className="nav-link">
-                Login
-              </Link>
-            </>
-          )}
+        {show && <>
+          {storedToken ? (
+              <>
+                {/* If the user is logged in, show logout button */}
+                <Button sx={{color:"white", textTransform: "none"}} onClick={() => handleLogout()}>
+                  Logout
+                </Button>
+              </>
+            ) : (
+              <>
+                {/* If the user is not logged in, show login button */}
+                <Link to="/login" className="nav-link">
+                  Login
+                </Link>
+              </>
+            )}
+        </>}
         <div className="logo">
           <img src="../../../assets/logo.png" alt="Company Logo" />
           <h3 className="logo-text">Aussie Tea</h3>
