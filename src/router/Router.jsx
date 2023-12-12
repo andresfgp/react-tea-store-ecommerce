@@ -20,27 +20,38 @@ import { useEffect } from 'react';
 import Header from '../components/header/Header';
 import Footer from '../components/footer/Footer';
 import Dashboard from '../containers/private/dashboard/Dashboard';
+import { useAuth } from '../containers/auth/AuthContext';
+import { useSnackbar } from '../hooks/useSnackbar';
 
 const AppRouter = () => {
   const navigate = useNavigate();
   const location = useLocation();
-  const storedToken = localStorage.getItem('token');
+  const { token, refresh, logout } = useAuth();
+  const showSnackbar = useSnackbar();
 
   useEffect(() => {
-    if (storedToken) {
-      const decodedToken = jwt_decode(storedToken);
-      const isTokenExpired = decodedToken.exp * 1000 < Date.now();
+    const checkToken = async () => {
+      if (token) {
+        const decodedToken = jwt_decode(token);
+        const isTokenExpired = decodedToken.exp * 1000 < Date.now();
 
-      if (isTokenExpired) {
-        localStorage.removeItem('user');
-        localStorage.removeItem('token');
-        navigate('/login');
-      }    
-      if (!isTokenExpired && location.pathname==="/login") {
-        navigate('/');
+        if (isTokenExpired) {
+          try {
+            // Attempt to refresh the token
+            await refresh();
+          } catch (error) {
+            showSnackbar('error', 'Error refreshing token');
+            logout()
+          }
+        }
+        if (!isTokenExpired && location.pathname==="/login") {
+          navigate('/');
+        }
       }
-    }
-  }, [location.pathname, navigate, storedToken]);
+    };
+
+    checkToken();
+  }, [token, navigate, refresh]);
 
   return (
     <>

@@ -9,11 +9,10 @@ const AuthContext = createContext();
 const AuthProvider = ({ children }) => {
   const authAxios = useAuthAxios();
   const [user, setUser] = useState(null);
-  const [token, setToken] = useState(null); // New state for token
+  const [token, setToken] = useState(null);
   const navigate = useNavigate();
   const showSnackbar = useSnackbar();
 
-  // Check for user and token in local storage when the component mounts
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
     const storedToken = localStorage.getItem('token');
@@ -29,7 +28,6 @@ const AuthProvider = ({ children }) => {
       setUser(response.data.data);
       setToken(response.data.token);
 
-      // Save user and token in local storage
       localStorage.setItem('user', JSON.stringify(response.data.data));
       localStorage.setItem('token', response.data.token);
 
@@ -45,7 +43,6 @@ const AuthProvider = ({ children }) => {
       setUser(null);
       setToken(null);
       navigate('/login');
-      // Remove user and token from local storage
       localStorage.removeItem('user');
       localStorage.removeItem('token');
     } catch (error) {
@@ -53,8 +50,19 @@ const AuthProvider = ({ children }) => {
     }
   };
 
+  const refresh = async () => {
+    try {
+      const response = await authAxios.post('refresh');
+      setToken(response.data.access_token);
+      localStorage.setItem('token', response.data.access_token);
+    } catch (error) {
+      showSnackbar('error', 'Error during token refresh');
+      logout(); // Log out user if token refresh fails
+    }
+  };
+
   return (
-    <AuthContext.Provider value={{ user, token, login, logout }}>
+    <AuthContext.Provider value={{ user, token, login, logout, refresh }}>
       {children}
     </AuthContext.Provider>
   );
@@ -63,10 +71,9 @@ const AuthProvider = ({ children }) => {
 const useAuth = () => {
   const context = useContext(AuthContext);
   if (!context) {
-    throw new Error('useAuth debe ser utilizado dentro de un AuthProvider');
+    throw new Error('useAuth must be used within an AuthProvider');
   }
   return context;
 };
 
-// eslint-disable-next-line react-refresh/only-export-components
 export { AuthProvider, useAuth };
