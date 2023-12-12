@@ -2,7 +2,7 @@ import axios from 'axios';
 
 const useAuthAxios = () => {
   const authAxios = axios.create({
-    baseURL: 'https://aussie-tea-server.onrender.com/', // Replace with your API base URL
+    baseURL: import.meta.env.VITE_API_BASE_URL, // Replace with your API base URL
     headers: {
       'Content-Type': 'application/json',
     },
