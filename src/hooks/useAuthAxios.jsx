@@ -8,6 +8,20 @@ const useAuthAxios = () => {
     },
   });
 
+  // Add an interceptor to include the authorization token in the headers
+  authAxios.interceptors.request.use(
+    (config) => {
+      const token = localStorage.getItem('token'); // Assume token is stored in localStorage
+      if (token) {
+        config.headers.Authorization = `Bearer ${token}`;
+      }
+      return config;
+    },
+    (error) => {
+      return Promise.reject(error);
+    }
+  );
+
   // CRUD operations
   const get = (url, config) => authAxios.get(url, config);
   const post = (url, data, config) => authAxios.post(url, data, config);

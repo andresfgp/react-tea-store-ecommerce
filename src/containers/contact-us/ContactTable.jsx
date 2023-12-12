@@ -1,3 +1,4 @@
+/* eslint-disable react/prop-types */
 import { useState, useEffect } from 'react';
 import './ContactTable.css';
 import {
@@ -17,7 +18,7 @@ import DeleteIcon from '@mui/icons-material/Delete';
 import { useSnackbar } from '../../hooks/useSnackbar';
 import useAuthAxios from '../../hooks/useAuthAxios';
 
-const ContactTable = () => {
+const ContactTable = ({postContact, setPostContact}) => {
   const authAxios = useAuthAxios();
   const [contacts, setContacts] = useState([]);
   const [selectedContact, setSelectedContact] = useState(null);
@@ -31,10 +32,11 @@ const ContactTable = () => {
   const showSnackbar = useSnackbar();
   const [deleteConfirmationOpen, setDeleteConfirmationOpen] = useState(false);
 
-  const fetchContacts = async () => {
+const fetchContacts = async () => {
     try {
       const response = await authAxios.get('contact');
       setContacts(response.data.result);
+      setPostContact(false)
     } catch (error) {
       console.error('Error fetching contacts:', error);
     }
@@ -42,10 +44,9 @@ const ContactTable = () => {
 
   useEffect(() => {
     fetchContacts();
-  }, []);
+  }, [postContact]);
 
   const handleOpenModal = (contact) => {
-    console.log(contact);
     setSelectedContact(contact);
     setFormData(contact);
     setModalOpen(true);
@@ -79,7 +80,7 @@ const ContactTable = () => {
 
   const handleDelete = async (id) => {
     try {
-      await authAxios.delete(`contact/${id}`);
+      await authAxios.del(`contact/${id}`);
       fetchContacts();
       showSnackbar('success', 'Contact deleted successfully');
       handleCloseDeleteConfirmation()

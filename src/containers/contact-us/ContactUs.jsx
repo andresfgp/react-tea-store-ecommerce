@@ -1,9 +1,9 @@
 import { useState } from 'react';
-import axios from 'axios';
 import Modal from 'react-modal';
 
 import './ContactUs.css';
 import ContactTable from './ContactTable';
+import useAuthAxios from '../../hooks/useAuthAxios';
 
 const INITIAL_DATA = {
   name: '',
@@ -13,9 +13,11 @@ const INITIAL_DATA = {
 };
 
 const ContactUs = () => {
+  const authAxios = useAuthAxios();
   const [formData, setFormData] = useState(INITIAL_DATA);
   const [loading, setLoading] = useState(false);
   const [modalIsOpen, setModalIsOpen] = useState(false);
+  const [postContact, setPostContact] = useState(false);
   const [modalContent, setModalContent] = useState({});
 
   const openModal = (content) => {
@@ -38,14 +40,15 @@ const ContactUs = () => {
     setLoading(true);
 
     try {
-      await axios.post(
-        'https://aussie-tea-server.onrender.com/contact',
+      await authAxios.post(
+        'contact',
         formData
       );
       openModal({
         type: 'success',
         message: 'Your message has been sent successfully. Thank you!',
       });
+      setPostContact(true)
     } catch (error) {
       openModal({
         type: 'error',
@@ -162,9 +165,9 @@ const ContactUs = () => {
       >
         <h2>{modalContent.type === 'success' ? 'Success!' : 'Error'}</h2>
         <p>{modalContent.message}</p>
-        <button className='close-button' onClick={closeModal}>Cancel</button>
+        <button className='close-button' onClick={closeModal}>Ok</button>
       </Modal>
-      <ContactTable />
+      <ContactTable postContact={postContact} setPostContact={setPostContact}/>
     </section>
   );
 };

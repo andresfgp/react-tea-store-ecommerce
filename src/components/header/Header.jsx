@@ -26,7 +26,6 @@ const Header = () => {
     width: window.innerWidth,
     height: window.innerHeight,
   });
-  const show = false
 
   const handleLogout = async () => {
     await logout();
@@ -169,7 +168,6 @@ const Header = () => {
         </div>
       </nav>
       <Box sx={{ display: "flex"}}>
-        {show && <>
           {storedToken ? (
               <>
                 {/* If the user is logged in, show logout button */}
@@ -185,7 +183,6 @@ const Header = () => {
                 </Link>
               </>
             )}
-        </>}
         <div className="logo">
           <img src="../../../assets/logo.png" alt="Company Logo" />
           <h3 className="logo-text">Aussie Tea</h3>

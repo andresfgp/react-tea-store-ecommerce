@@ -41,7 +41,7 @@ const AuthProvider = ({ children }) => {
 
   const logout = async () => {
     try {
-      await authAxios.get('logout');
+      await authAxios.post('logout');
       setUser(null);
       setToken(null);
       navigate('/login');
