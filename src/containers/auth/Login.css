@@ -1,5 +1,5 @@
 .login {
-    background-image: linear-gradient(#11db9b, #004f73);
+    background-image: linear-gradient( #004f73,#11db9b);
     display: flex;
     align-items: center;
     flex-direction: column;
@@ -29,7 +29,7 @@
       text-align: center;
     }
     >img{
-      width: 60px;
+      width: 400px;
       text-align: center;
     }
   }
