@@ -43,8 +43,14 @@ const fetchContacts = async () => {
   };
 
   useEffect(() => {
-    fetchContacts();
+    if(postContact){
+      fetchContacts();
+    }
   }, [postContact]);
+
+  useEffect(() => {
+    fetchContacts();
+  }, []);
 
   const handleOpenModal = (contact) => {
     setSelectedContact(contact);

@@ -25,12 +25,16 @@ const AuthProvider = ({ children }) => {
   const login = async (credentials) => {
     try {
       const response = await authAxios.post('login', credentials);
-      setUser(response.data.data);
-      setToken(response.data.token);
-
-      localStorage.setItem('user', JSON.stringify(response.data.data));
-      localStorage.setItem('token', response.data.token);
-
+      const { data, token, refresh_token } = response.data;
+  
+      setUser(data);
+      setToken(token);
+  
+      // Save user, access token, and refresh token in localStorage
+      localStorage.setItem('user', JSON.stringify(data));
+      localStorage.setItem('token', token);
+      localStorage.setItem('refreshToken', refresh_token);
+  
       navigate('/');
     } catch (error) {
       showSnackbar('error', 'Invalid email or password');
@@ -45,21 +49,30 @@ const AuthProvider = ({ children }) => {
       navigate('/login');
       localStorage.removeItem('user');
       localStorage.removeItem('token');
+      localStorage.removeItem('refreshToken');
     } catch (error) {
       showSnackbar('error', 'Error during logout');
     }
   };
 
-  const refresh = async () => {
-    try {
-      const response = await authAxios.post('refresh');
-      setToken(response.data.access_token);
-      localStorage.setItem('token', response.data.access_token);
-    } catch (error) {
-      showSnackbar('error', 'Error during token refresh');
-      logout(); // Log out user if token refresh fails
+const refresh = async () => {
+  try {
+    const refreshToken = localStorage.getItem('refreshToken');
+    if (!refreshToken) {
+      throw new Error('No refresh token available');
     }
-  };
+    const response = await authAxios.post('refresh', { refresh_token: refreshToken });
+    const { token } = response.data;
+    setToken(token);
+    localStorage.setItem('token', token);
+  } catch (error) {
+    showSnackbar('error', 'Error during token refresh');
+    navigate('/login');
+    localStorage.removeItem('user');
+    localStorage.removeItem('token');
+    localStorage.removeItem('refreshToken');
+  }
+};
 
   return (
     <AuthContext.Provider value={{ user, token, login, logout, refresh }}>
